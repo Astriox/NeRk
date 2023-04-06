@@ -52,3 +52,6 @@ def spotify_downloader(update, context):
         track_url = result['tracks']['items'][0]['external_urls']['spotify']
         audio = spotify.audio_features(track_id)
         audio
+        
+        
+updater.start_polling()
