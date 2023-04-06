@@ -49,3 +49,20 @@ def download_instagram_reel(update, context):
     L.download_video(url, filename='reel.mp4')
 
     context.bot.send_video(chat_id=update.effective_chat.id, video=open('reel.mp4', 'rb'))
+
+
+import telegram
+import subprocess
+
+def download_shorts(update, context):
+    chat_id = update.message.chat_id
+    url = context.args[0]
+    subprocess.run(["youtube-dl", "-f", "22", "-o", "shorts.%(ext)s", url])
+    context.bot.send_video(chat_id=chat_id, video=open('shorts.mp4', 'rb'))
+
+updater = telegram.ext.Updater(token='YOUR_TOKEN_HERE', use_context=True)
+updater.dispatcher.add_handler(telegram.ext.CommandHandler('download_shorts', download_shorts))
+
+updater.start_polling()
+updater.idle()
+
