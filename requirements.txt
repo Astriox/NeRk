@@ -1,0 +1,7 @@
+youtube-dl
+python-telegram-bot
+spotipy
+instaloader
+beautifulsoup4
+google-api-python-client
+pytube
